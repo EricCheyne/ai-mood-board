@@ -1,20 +1,22 @@
-const generateBtn = document.getElementById('generateBtn');
-const moodInput = document.getElementById('moodInput');
-const aiImage = document.getElementById('aiImage');
-const paletteDiv = document.getElementById('palette');
-const quoteEl = document.getElementById('quote');
-
 generateBtn.addEventListener('click', async () => {
   const mood = moodInput.value.trim();
   if (!mood) return alert("Please enter a mood!");
 
-  // --- DUMMY PLACEHOLDERS FOR NOW ---
-  // Replace this with API integration later
+  // AI Image (via your backend)
+  try {
+    const res = await fetch('http://localhost:3000/generate-image', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: mood })
+    });
+    const data = await res.json();
+    aiImage.src = data.imageUrl;
+  } catch (err) {
+    console.error(err);
+    alert("Failed to generate image.");
+  }
 
-  // Image placeholder (can be replaced with DALL·E or Stability AI)
-  aiImage.src = `https://source.unsplash.com/600x400/?${encodeURIComponent(mood)}`;
-
-  // Generate random color palette
+  // Color palette
   paletteDiv.innerHTML = '';
   for (let i = 0; i < 5; i++) {
     const color = '#' + Math.floor(Math.random()*16777215).toString(16);
@@ -24,6 +26,6 @@ generateBtn.addEventListener('click', async () => {
     paletteDiv.appendChild(div);
   }
 
-  // Quote (static for now — can use OpenAI later)
+  // Quote
   quoteEl.textContent = `“Let your ${mood} energy guide you.”`;
 });
