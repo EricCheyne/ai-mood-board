@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  input, button {
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #aiImage {
+    max-width: 100%;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+  
+  .palette {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .color-box {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .quote {
+    font-style: italic;
+    color: #555;
+  }
+  
